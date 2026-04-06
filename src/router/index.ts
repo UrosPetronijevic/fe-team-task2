@@ -6,9 +6,9 @@ import {
 import { useAuthStore } from "@/stores/auth";
 
 import HomeView from "@/views/HomeView.vue";
-import DashboardView from "@/views/DashboardView.vue";
+import DashboardView from "@/views/dashboard/DashboardView.vue";
 import UsersView from "@/views/UsersView.vue";
-import UserItemView from "@/views/UserItemView.vue";
+import UserItemView from "@/views/user/UserItemView.vue";
 
 declare module "vue-router" {
   interface RouteMeta {
