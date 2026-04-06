@@ -3,7 +3,7 @@ import { ref } from "vue";
 
 export const useAuthStore = defineStore("auth", () => {
   const isLoggedIn = ref<boolean>(
-    localStorage.getItem("isLoggedIn") === "true",
+    localStorage.getItem("isLoggedIn") === "true"
   );
 
   function login(): void {
