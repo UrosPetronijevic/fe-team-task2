@@ -120,17 +120,16 @@ function handleSubmit() {
           icon="mail"
           :error="errors.email"
         />
-        <div class="field-with-hint">
-          <BaseInput
-            v-model="form.password"
-            label="Password"
-            type="password"
-            placeholder="Create a password"
-            icon="lock"
-            :error="errors.password"
-          />
-          <span class="field-hint">Must be at least 8 characters</span>
-        </div>
+
+        <BaseInput
+          v-model="form.password"
+          label="Password"
+          type="password"
+          placeholder="Create a password"
+          icon="lock"
+          :error="errors.password"
+        />
+
         <BaseInput
           v-model="form.confirmPassword"
           label="Confirm password"
@@ -167,21 +166,20 @@ function handleSubmit() {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  min-height: 100vh;
   padding: 24px;
 }
 
 .bg-gradient {
   position: fixed;
-  inset: 0;
-  background-image: linear-gradient(
-    135deg,
-    #00e0ff14 0%,
-    #00000000 25%,
-    #7800ff0f 50%,
-    #00000000 75%,
-    #00c8ff12 100%
-  );
+  width: 700px;
+  height: 700px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 9999px;
+  border: 1px solid #00e0ff1a;
+  box-shadow: #00e0ff1a 0px 0px 160px 0px, #00e0ff0d 0px 0px 160px 0px inset;
   pointer-events: none;
 }
 
@@ -217,18 +215,6 @@ function handleSubmit() {
   gap: 14px;
   width: 100%;
   margin-bottom: 16px;
-}
-
-.field-with-hint {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.field-hint {
-  color: #ffffff33;
-  font-size: 11px;
-  line-height: 1.33333;
 }
 
 .form-actions {
