@@ -18,8 +18,12 @@ defineProps({
   },
   icon: {
     type: String,
-    default: null, // 'user' | 'mail' | 'lock'
+    default: null,
     validator: (v) => ["user", "mail", "lock"].includes(v),
+  },
+  error: {
+    type: String,
+    default: null,
   },
 });
 
@@ -28,7 +32,10 @@ defineEmits(["update:modelValue"]);
 
 <template>
   <div class="input-group">
-    <label v-if="label" class="input-label">{{ label }}</label>
+    <div v-if="label" class="input-label-row">
+      <label class="input-label">{{ label }}</label>
+      <span v-if="error" class="input-error">{{ error }}</span>
+    </div>
     <div class="input-wrapper">
       <!-- User Icon -->
       <svg
@@ -141,5 +148,20 @@ defineEmits(["update:modelValue"]);
 
 .input-field::placeholder {
   color: #ffffff40;
+}
+
+.input-label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.input-error {
+  color: #ff6b6b;
+  font-size: 11px;
+}
+
+.input-wrapper.error {
+  border-color: #ff6b6b66;
 }
 </style>

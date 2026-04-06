@@ -17,6 +17,14 @@ const authStore = useAuthStore();
 
 <style scoped>
 .app-wrapper {
-  background-color: #080c14;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.app-main {
+  flex: 1;
+  overflow: hidden;
 }
 </style>

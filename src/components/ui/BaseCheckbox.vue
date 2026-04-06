@@ -4,6 +4,7 @@ defineProps({
     type: Boolean,
     default: false,
   },
+  error: { type: Boolean, default: false },
 });
 
 defineEmits(["update:modelValue"]);
@@ -13,7 +14,7 @@ defineEmits(["update:modelValue"]);
   <label class="checkbox-wrapper">
     <div
       class="checkbox-box"
-      :class="{ checked: modelValue }"
+      :class="{ checked: modelValue, error: error }"
       @click="$emit('update:modelValue', !modelValue)"
     >
       <svg
@@ -80,7 +81,6 @@ defineEmits(["update:modelValue"]);
   line-height: 1.5;
 }
 
-/* for any <a> tags passed in the slot */
 .checkbox-label :deep(a) {
   color: #00e0ff;
   font-weight: 500;
@@ -89,5 +89,9 @@ defineEmits(["update:modelValue"]);
 
 .checkbox-label :deep(a:hover) {
   text-decoration: underline;
+}
+
+.checkbox-box.error {
+  border-color: #ff6b6b;
 }
 </style>

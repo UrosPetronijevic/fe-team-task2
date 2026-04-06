@@ -43,11 +43,12 @@ defineProps({
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 500px;
-  max-height: calc(100vh - 48px);
+  width: 460px;
+  max-height: 100%;
   overflow-y: auto;
+  scrollbar-width: none;
   z-index: 10;
-  padding: 40px 56px;
+  padding: 36px 44px;
   background-color: #ffffff14;
   border: 1px solid #00e0ff40;
   border-radius: 24px;
@@ -58,11 +59,6 @@ defineProps({
 
 .auth-card::-webkit-scrollbar {
   display: none;
-}
-
-.auth-card {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
 }
 
 .gradient-line {
@@ -95,14 +91,14 @@ defineProps({
 }
 
 .card-icon {
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
 .card-label {
-  margin-bottom: 12px;
+  margin-bottom: 8px;
   color: #00e0ffb3;
   font-family: ui-sans-serif, system-ui, sans-serif;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 600;
   line-height: 1.33333;
   letter-spacing: 3px;
@@ -110,10 +106,10 @@ defineProps({
 }
 
 .card-title {
-  margin: 0 0 8px 0;
+  margin: 0 0 6px 0;
   color: #ffffff;
   font-family: ui-sans-serif, system-ui, sans-serif;
-  font-size: 30px;
+  font-size: 26px;
   font-weight: 700;
   line-height: 1.25;
   letter-spacing: -0.5px;
@@ -121,7 +117,7 @@ defineProps({
 }
 
 .card-subtitle {
-  margin: 0 0 32px 0;
+  margin: 0 0 24px 0;
   color: #ffffff66;
   font-family: ui-sans-serif, system-ui, sans-serif;
   font-size: 13px;

@@ -19,19 +19,74 @@ const form = reactive({
   agreed: false,
 });
 
+const errors = reactive({
+  name: "",
+  email: "",
+  password: "",
+  confirmPassword: "",
+  agreed: false,
+});
+
+function validate() {
+  let valid = true;
+
+  errors.name = "";
+  errors.email = "";
+  errors.password = "";
+  errors.confirmPassword = "";
+  errors.agreed = false;
+
+  if (!form.name.trim()) {
+    errors.name = "Required";
+    valid = false;
+  }
+
+  if (!form.email.trim()) {
+    errors.email = "Required";
+    valid = false;
+  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
+    errors.email = "Invalid email";
+    valid = false;
+  }
+
+  if (!form.password) {
+    errors.password = "Required";
+    valid = false;
+  } else if (form.password.length < 8) {
+    errors.password = "Min. 8 characters";
+    valid = false;
+  }
+
+  if (!form.confirmPassword) {
+    errors.confirmPassword = "Required";
+    valid = false;
+  } else if (form.password !== form.confirmPassword) {
+    errors.confirmPassword = "Passwords do not match";
+    valid = false;
+  }
+
+  if (!form.agreed) {
+    errors.agreed = true;
+    valid = false;
+  }
+
+  return valid;
+}
+
 function handleOAuth(provider: string) {
   console.log(`OAuth with ${provider}`);
 }
 
 function handleSubmit() {
-  // hook up to backend later
-  console.log(form);
+  if (!validate()) return;
+
+  authStore.login();
+  router.push("/dashboard");
 }
 </script>
 
 <template>
   <div class="page">
-    <!-- Background gradient -->
     <div class="bg-gradient" />
 
     <AuthCard
@@ -39,7 +94,9 @@ function handleSubmit() {
       title="Create your account"
       subtitle="Join thousands of users building amazing projects"
     >
-      <OAuthButtons @oauth="handleOAuth" />
+      <div class="oauth-wrapper">
+        <OAuthButtons @oauth="handleOAuth" />
+      </div>
 
       <div class="divider">
         <div class="divider-line" />
@@ -53,6 +110,7 @@ function handleSubmit() {
           label="Full name"
           placeholder="Enter your full name"
           icon="user"
+          :error="errors.name"
         />
         <BaseInput
           v-model="form.email"
@@ -60,6 +118,7 @@ function handleSubmit() {
           type="email"
           placeholder="you@example.com"
           icon="mail"
+          :error="errors.email"
         />
         <div class="field-with-hint">
           <BaseInput
@@ -68,6 +127,7 @@ function handleSubmit() {
             type="password"
             placeholder="Create a password"
             icon="lock"
+            :error="errors.password"
           />
           <span class="field-hint">Must be at least 8 characters</span>
         </div>
@@ -77,24 +137,27 @@ function handleSubmit() {
           type="password"
           placeholder="Confirm your password"
           icon="lock"
+          :error="errors.confirmPassword"
         />
       </div>
 
-      <BaseCheckbox v-model="form.agreed">
-        I agree to the
-        <a href="#">Terms of Service</a>
-        and
-        <a href="#">Privacy Policy</a>
-      </BaseCheckbox>
+      <div class="form-actions">
+        <BaseCheckbox v-model="form.agreed" :error="errors.agreed">
+          I agree to the
+          <a href="#">Terms of Service</a>
+          and
+          <a href="#">Privacy Policy</a>
+        </BaseCheckbox>
 
-      <BaseButton type="submit" @click="handleSubmit">
-        Create account
-      </BaseButton>
+        <BaseButton type="submit" @click="handleSubmit">
+          Create account
+        </BaseButton>
 
-      <p class="footer-text">
-        Already have an account?
-        <RouterLink to="/signin">Sign in</RouterLink>
-      </p>
+        <p class="footer-text">
+          Already have an account?
+          <RouterLink to="/signin">Sign in</RouterLink>
+        </p>
+      </div>
     </AuthCard>
   </div>
 </template>
@@ -105,6 +168,7 @@ function handleSubmit() {
   justify-content: center;
   align-items: center;
   height: 100%;
+  padding: 24px;
 }
 
 .bg-gradient {
@@ -121,12 +185,17 @@ function handleSubmit() {
   pointer-events: none;
 }
 
+.oauth-wrapper {
+  width: 100%;
+  margin-bottom: 24px;
+}
+
 .divider {
   display: flex;
   align-items: center;
   gap: 16px;
   width: 100%;
-  margin-bottom: 28px;
+  margin-bottom: 20px;
 }
 
 .divider-line {
@@ -137,7 +206,7 @@ function handleSubmit() {
 
 .divider-text {
   color: #ffffff4d;
-  font-size: 12px;
+  font-size: 11px;
   text-transform: uppercase;
   white-space: nowrap;
 }
@@ -145,27 +214,34 @@ function handleSubmit() {
 .form-fields {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 14px;
   width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 .field-with-hint {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
 }
 
 .field-hint {
   color: #ffffff33;
-  font-size: 12px;
+  font-size: 11px;
   line-height: 1.33333;
 }
 
+.form-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
 .footer-text {
-  margin-top: 28px;
+  text-align: center;
   color: #ffffff66;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .footer-text a {
