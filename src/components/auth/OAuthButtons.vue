@@ -1,4 +1,3 @@
-<!-- src/components/auth/OAuthButtons.vue -->
 <script setup>
 defineEmits(["oauth"]);
 </script>
