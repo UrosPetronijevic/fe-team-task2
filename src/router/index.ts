@@ -5,9 +5,11 @@ import {
 } from "vue-router";
 import { useAuthStore } from "@/stores/auth";
 
-import HomeView from "@/views/HomeView.vue";
+import SignInView from "@/views/auth/SignInView.vue";
+import SignUpView from "@/views/auth/SignUpView.vue";
+import ForgotPasswordView from "@/views/auth/ForgotPasswordView.vue";
 import DashboardView from "@/views/dashboard/DashboardView.vue";
-import UsersView from "@/views/UsersView.vue";
+import UsersView from "@/views/user/UsersView.vue";
 import UserItemView from "@/views/user/UserItemView.vue";
 
 declare module "vue-router" {
@@ -20,7 +22,21 @@ declare module "vue-router" {
 const routes: RouteRecordRaw[] = [
   {
     path: "/",
-    component: HomeView,
+    redirect: "/signin",
+  },
+  {
+    path: "/signin",
+    component: SignInView,
+    meta: { requiresGuest: true },
+  },
+  {
+    path: "/signup",
+    component: SignUpView,
+    meta: { requiresGuest: true },
+  },
+  {
+    path: "/forgot-password",
+    component: ForgotPasswordView,
     meta: { requiresGuest: true },
   },
   {
@@ -40,7 +56,7 @@ const routes: RouteRecordRaw[] = [
   },
   {
     path: "/:pathMatch(.*)*",
-    redirect: "/",
+    redirect: "/signin",
   },
 ];
 
@@ -53,7 +69,7 @@ router.beforeEach((to) => {
   const authStore = useAuthStore();
 
   if (to.meta.requiresAuth && !authStore.isLoggedIn) {
-    return { path: "/" };
+    return { path: "/signin" };
   }
 
   if (to.meta.requiresGuest && authStore.isLoggedIn) {
