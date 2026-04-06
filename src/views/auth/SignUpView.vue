@@ -12,7 +12,6 @@ const router = useRouter();
 const authStore = useAuthStore();
 
 const form = reactive({
-  name: "",
   email: "",
   password: "",
   confirmPassword: "",
@@ -20,7 +19,6 @@ const form = reactive({
 });
 
 const errors = reactive({
-  name: "",
   email: "",
   password: "",
   confirmPassword: "",
@@ -30,16 +28,10 @@ const errors = reactive({
 function validate() {
   let valid = true;
 
-  errors.name = "";
   errors.email = "";
   errors.password = "";
   errors.confirmPassword = "";
   errors.agreed = false;
-
-  if (!form.name.trim()) {
-    errors.name = "Required";
-    valid = false;
-  }
 
   if (!form.email.trim()) {
     errors.email = "Required";
@@ -105,13 +97,6 @@ function handleSubmit() {
       </div>
 
       <div class="form-fields">
-        <BaseInput
-          v-model="form.name"
-          label="Full name"
-          placeholder="Enter your full name"
-          icon="user"
-          :error="errors.name"
-        />
         <BaseInput
           v-model="form.email"
           label="Email address"
