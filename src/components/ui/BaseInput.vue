@@ -37,7 +37,6 @@ defineEmits(["update:modelValue"]);
       <span v-if="error" class="input-error">{{ error }}</span>
     </div>
     <div class="input-wrapper">
-      <!-- User Icon -->
       <svg
         v-if="icon === 'user'"
         class="input-icon"
@@ -53,7 +52,6 @@ defineEmits(["update:modelValue"]);
         <circle cx="12" cy="7" r="4" />
       </svg>
 
-      <!-- Mail Icon -->
       <svg
         v-else-if="icon === 'mail'"
         class="input-icon"
@@ -69,7 +67,6 @@ defineEmits(["update:modelValue"]);
         <polyline points="22,4 12,13 2,4" />
       </svg>
 
-      <!-- Lock Icon -->
       <svg
         v-else-if="icon === 'lock'"
         class="input-icon"
@@ -96,72 +93,4 @@ defineEmits(["update:modelValue"]);
   </div>
 </template>
 
-<style scoped>
-.input-group {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  width: 100%;
-}
-
-.input-label {
-  color: #ffffffcc;
-  font-family: ui-sans-serif, system-ui, sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-}
-
-.input-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  width: 100%;
-  height: 50px;
-  padding: 0 16px;
-  background-color: #ffffff0a;
-  border: 1px solid #00e0ff1a;
-  border-radius: 12px;
-  transition: border-color 0.2s ease;
-}
-
-.input-wrapper:focus-within {
-  border-color: #00e0ff66;
-}
-
-.input-icon {
-  width: 18px;
-  height: 18px;
-  color: #00e0ff80;
-  flex-shrink: 0;
-}
-
-.input-field {
-  flex: 1;
-  background: transparent;
-  border: none;
-  outline: none;
-  color: #ffffff;
-  font-family: ui-sans-serif, system-ui, sans-serif;
-  font-size: 14px;
-  line-height: 1.42857;
-}
-
-.input-field::placeholder {
-  color: #ffffff40;
-}
-
-.input-label-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.input-error {
-  color: #ff6b6b;
-  font-size: 11px;
-}
-
-.input-wrapper.error {
-  border-color: #ff6b6b66;
-}
-</style>
+<style scoped src="@/assets/css/components/ui/BaseInput.css"></style>
