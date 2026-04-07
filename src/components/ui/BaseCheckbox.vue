@@ -13,12 +13,11 @@ defineEmits(["update:modelValue"]);
 </script>
 
 <template>
-  <label class="checkbox-wrapper">
-    <div
-      class="checkbox-box"
-      :class="{ checked: modelValue, error: error }"
-      @click="$emit('update:modelValue', !modelValue)"
-    >
+  <label
+    class="checkbox-wrapper"
+    @click="$emit('update:modelValue', !modelValue)"
+  >
+    <div class="checkbox-box" :class="{ checked: modelValue, error: error }">
       <BaseIcon
         v-if="modelValue"
         name="check"

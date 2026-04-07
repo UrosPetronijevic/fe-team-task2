@@ -18,7 +18,7 @@ function handleLogout() {
       <div class="topbar-logo">
         <BaseIcon name="layers" :size="18" :stroke-width="2.5" />
       </div>
-      <span class="topbar-brand-name">Wonder</span>
+      <span class="topbar-brand-name">Pulse</span>
     </div>
 
     <nav class="topbar-nav">
