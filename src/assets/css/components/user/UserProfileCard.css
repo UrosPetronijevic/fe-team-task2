@@ -1,0 +1,211 @@
+.profile-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 360px;
+  flex-shrink: 0;
+  padding: 32px 28px;
+  background-color: #ffffff08;
+  border: 1px solid #ffffff0f;
+  border-radius: 16px;
+  box-sizing: border-box;
+}
+
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 88px;
+  height: 88px;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #00c8ff26 0%, #00e0ff1a 100%);
+  border: 2px solid #00e0ff30;
+  margin-bottom: 16px;
+}
+
+.avatar-initials {
+  color: #00e0ff;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.profile-name {
+  margin: 0 0 4px 0;
+  color: #ffffff;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.profile-username {
+  color: #00e0ff;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+.profile-badges {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+}
+
+.badge--green {
+  background-color: #4ade8014;
+  border: 1px solid #4ade8033;
+  color: #4ade80;
+}
+
+.badge--green .badge-dot {
+  background-color: #4ade80;
+}
+
+.badge--red {
+  background-color: #ff6b6b14;
+  border: 1px solid #ff6b6b33;
+  color: #ff6b6b;
+}
+
+.badge--red .badge-dot {
+  background-color: #ff6b6b;
+}
+
+.badge--cyan {
+  background-color: #00e0ff14;
+  border: 1px solid #00e0ff33;
+  color: #00e0ff;
+}
+
+.badge--cyan .badge-dot {
+  background-color: #00e0ff;
+}
+
+.badge--muted {
+  background-color: #ffffff0a;
+  border: 1px solid #ffffff14;
+  color: #ffffff40;
+}
+
+.badge--muted .badge-dot {
+  background-color: #ffffff40;
+}
+
+.profile-details {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.detail-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 0;
+  border-bottom: 1px solid #ffffff08;
+}
+
+.detail-row:last-child {
+  border-bottom: none;
+}
+
+.detail-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  background-color: #ffffff0a;
+  border-radius: 8px;
+  color: #ffffff40;
+  flex-shrink: 0;
+}
+
+.detail-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.detail-label {
+  color: #ffffff40;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.detail-value {
+  color: #ffffffcc;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.profile-actions {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+.edit-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex: 1;
+  height: 40px;
+  background-color: #ffffff0d;
+  border: 1px solid #ffffff1a;
+  border-radius: 10px;
+  color: #ffffffcc;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.edit-btn:hover {
+  background-color: #ffffff1a;
+}
+
+.delete-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: #ff4d4d0d;
+  border: 1px solid #ff4d4d30;
+  border-radius: 10px;
+  color: #ff6b6b;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.delete-btn:hover {
+  background-color: #ff4d4d20;
+}

@@ -57,34 +57,4 @@ defineEmits(["oauth"]);
   </div>
 </template>
 
-<style scoped>
-.oauth-buttons {
-  display: flex;
-  width: 100%;
-  gap: 12px;
-}
-
-.oauth-btn {
-  display: flex;
-  flex: 1;
-  height: 48px;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  background-color: #ffffff0d;
-  border: 1px solid #ffffff14;
-  border-radius: 12px;
-  backdrop-filter: blur(8px);
-  color: #ffffffcc;
-  font-family: ui-sans-serif, system-ui, sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background-color 0.2s ease, border-color 0.2s ease;
-}
-
-.oauth-btn:hover {
-  background-color: #ffffff1a;
-  border-color: #ffffff26;
-}
-</style>
+<style scoped src="@/assets/css/components/auth/OAuthButtons.css"></style>
