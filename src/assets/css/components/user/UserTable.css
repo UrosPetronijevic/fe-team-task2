@@ -189,3 +189,7 @@ td {
   padding: 32px;
   color: var(--text-muted);
 }
+
+.clickable-row {
+  cursor: pointer;
+}

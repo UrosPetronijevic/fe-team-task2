@@ -127,15 +127,18 @@ function userPath(id: number): string {
         </tr>
       </thead>
       <tbody>
-        <tr v-for="user in sortedUsers" :key="user.id">
+        <tr
+          v-for="user in sortedUsers"
+          :key="user.id"
+          class="clickable-row"
+          @click="$router.push(userPath(user.id))"
+        >
           <td v-if="columns.includes('id')" class="col-id">
             <span class="id-cell"># {{ user.id }}</span>
           </td>
 
           <td v-if="columns.includes('username')" class="col-username">
-            <RouterLink :to="userPath(user.id)" class="username-link">
-              {{ user.username }}
-            </RouterLink>
+            <span class="username-link">{{ user.username }}</span>
           </td>
 
           <td v-if="columns.includes('fullName')" class="col-fullName">
@@ -164,7 +167,7 @@ function userPath(id: number): string {
             <a
               :href="userPath(user.id)"
               class="action-btn"
-              @click.prevent="$router.push(userPath(user.id))"
+              @click.stop="$router.push(userPath(user.id))"
             >
               <BaseIcon name="external-link" :size="14" />
             </a>
