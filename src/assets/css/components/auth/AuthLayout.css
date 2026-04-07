@@ -1,0 +1,264 @@
+.auth-page {
+  position: relative;
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+  overflow: hidden;
+}
+
+.auth-brand {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 10;
+}
+
+.brand-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  background: linear-gradient(
+    135deg,
+    var(--accent-dim, #1a3a4a),
+    var(--accent-subtle, #0d2233)
+  );
+  border: 1px solid var(--accent-subtle);
+  border-radius: 8px;
+  color: var(--accent);
+}
+
+.brand-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 0.01em;
+}
+
+.auth-left {
+  position: relative;
+  flex: 0 0 58%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg-primary);
+  border-right: 1px solid var(--border-color);
+  overflow: hidden;
+}
+
+.circles-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 380px;
+  height: 380px;
+}
+
+.ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid var(--border-color);
+}
+
+.ring--outer {
+  width: 340px;
+  height: 340px;
+  opacity: 0.5;
+}
+
+.ring--inner {
+  width: 210px;
+  height: 210px;
+  opacity: 0.7;
+}
+
+.glow-core {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--accent-subtle) 0%, transparent 70%);
+  filter: blur(18px);
+  opacity: 0.8;
+}
+
+.sparkle {
+  position: relative;
+  z-index: 1;
+  color: var(--accent);
+  filter: drop-shadow(0 0 8px var(--accent));
+}
+
+.left-footer {
+  position: absolute;
+  bottom: 32px;
+  left: 32px;
+  right: 32px;
+}
+
+.left-tagline {
+  color: var(--text-secondary);
+  font-size: 13px;
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+
+.trust-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+}
+
+.badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--accent);
+  flex-shrink: 0;
+}
+
+.auth-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 40px 40px;
+  background-color: var(--bg-primary);
+}
+
+.auth-form-area {
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.auth-header {
+  margin-bottom: 28px;
+}
+
+.auth-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+.auth-title {
+  font-size: clamp(22px, 3vw, 30px);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+  line-height: 1.2;
+}
+
+.auth-subtitle {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+@media (max-width: 900px) {
+  .auth-left {
+    flex: 0 0 48%;
+  }
+
+  .circles-wrap {
+    width: 280px;
+    height: 280px;
+  }
+
+  .ring--outer {
+    width: 260px;
+    height: 260px;
+  }
+
+  .ring--inner {
+    width: 160px;
+    height: 160px;
+  }
+
+  .left-footer {
+    bottom: 24px;
+    left: 24px;
+    right: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .auth-page {
+    flex-direction: column;
+  }
+
+  .auth-left {
+    display: none;
+  }
+
+  .auth-brand {
+    position: relative;
+    top: auto;
+    left: auto;
+    padding: 20px 20px 0;
+  }
+
+  .auth-right {
+    flex: 1;
+    padding: 24px 20px 40px;
+    align-items: flex-start;
+    padding-top: 32px;
+  }
+
+  .auth-form-area {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 400px) {
+  .auth-right {
+    padding: 20px 16px 32px;
+  }
+
+  .auth-title {
+    font-size: 20px;
+  }
+
+  .trust-badges {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 320px) {
+  .auth-right {
+    padding: 16px 12px 24px;
+  }
+
+  .brand-name {
+    font-size: 14px;
+  }
+
+  .auth-title {
+    font-size: 18px;
+  }
+
+  .auth-label {
+    font-size: 10px;
+  }
+}
