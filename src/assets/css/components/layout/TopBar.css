@@ -18,6 +18,7 @@
   align-items: center;
   gap: 12px;
   margin-right: 40px;
+  text-decoration: none;
 }
 
 .topbar-logo {
