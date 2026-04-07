@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useRouter } from "vue-router";
+import { computed, ref } from "vue";
 import type { User } from "@/types/user";
 
 export type ColumnKey =
@@ -11,12 +11,12 @@ export type ColumnKey =
   | "isLoggedIn"
   | "action";
 
+type SortDir = "asc" | "desc";
+
 const props = defineProps<{
   users: User[];
   columns: ColumnKey[];
 }>();
-
-const router = useRouter();
 
 const columnLabels: Record<ColumnKey, string> = {
   id: "ID",
@@ -28,6 +28,48 @@ const columnLabels: Record<ColumnKey, string> = {
   action: "Action",
 };
 
+const sortableColumns: ColumnKey[] = [
+  "id",
+  "username",
+  "fullName",
+  "createdAt",
+  "isActive",
+  "isLoggedIn",
+];
+
+const sortKey = ref<ColumnKey>("id");
+const sortDir = ref<SortDir>("asc");
+
+function toggleSort(col: ColumnKey) {
+  if (!sortableColumns.includes(col)) return;
+  if (sortKey.value === col) {
+    sortDir.value = sortDir.value === "asc" ? "desc" : "asc";
+  } else {
+    sortKey.value = col;
+    sortDir.value = "asc";
+  }
+}
+
+const sortedUsers = computed(() => {
+  return [...props.users].sort((a, b) => {
+    const key = sortKey.value;
+    const dir = sortDir.value === "asc" ? 1 : -1;
+
+    const aVal = a[key as keyof User];
+    const bVal = b[key as keyof User];
+
+    if (typeof aVal === "boolean" && typeof bVal === "boolean") {
+      return (Number(aVal) - Number(bVal)) * dir;
+    }
+
+    if (typeof aVal === "number" && typeof bVal === "number") {
+      return (aVal - bVal) * dir;
+    }
+
+    return String(aVal).localeCompare(String(bVal)) * dir;
+  });
+});
+
 function formatDate(dateStr: string): string {
   return new Date(dateStr).toLocaleDateString("en-US", {
     year: "numeric",
@@ -36,8 +78,8 @@ function formatDate(dateStr: string): string {
   });
 }
 
-function goToUser(id: number) {
-  router.push(`/users/${id}`);
+function userPath(id: number): string {
+  return `/users/${id}`;
 }
 </script>
 
@@ -46,13 +88,66 @@ function goToUser(id: number) {
     <table class="user-table">
       <thead>
         <tr>
-          <th v-for="col in columns" :key="col" :class="['col-' + col]">
-            {{ columnLabels[col] }}
+          <th
+            v-for="col in columns"
+            :key="col"
+            :class="[
+              'col-' + col,
+              sortableColumns.includes(col) && 'sortable',
+              sortKey === col && 'sort-active',
+            ]"
+            @click="toggleSort(col)"
+          >
+            <span class="th-inner">
+              {{ columnLabels[col] }}
+              <span v-if="sortableColumns.includes(col)" class="sort-indicator">
+                <svg
+                  v-if="sortKey === col && sortDir === 'asc'"
+                  width="10"
+                  height="10"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="18 15 12 9 6 15" />
+                </svg>
+                <svg
+                  v-else-if="sortKey === col && sortDir === 'desc'"
+                  width="10"
+                  height="10"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+                <svg
+                  v-else
+                  width="10"
+                  height="10"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="sort-idle"
+                >
+                  <polyline points="18 15 12 9 6 15" />
+                </svg>
+              </span>
+            </span>
           </th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="user in users" :key="user.id">
+        <tr v-for="user in sortedUsers" :key="user.id">
           <!-- ID -->
           <td v-if="columns.includes('id')" class="col-id">
             <span class="id-cell"># {{ user.id }}</span>
@@ -60,7 +155,7 @@ function goToUser(id: number) {
 
           <!-- USERNAME -->
           <td v-if="columns.includes('username')" class="col-username">
-            <RouterLink :to="`/users/${user.id}`" class="username-link">
+            <RouterLink :to="userPath(user.id)" class="username-link">
               {{ user.username }}
             </RouterLink>
           </td>
@@ -93,7 +188,11 @@ function goToUser(id: number) {
 
           <!-- ACTION -->
           <td v-if="columns.includes('action')" class="col-action">
-            <button class="action-btn" @click="goToUser(user.id)">
+            <a
+              :href="userPath(user.id)"
+              class="action-btn"
+              @click.prevent="$router.push(userPath(user.id))"
+            >
               <svg
                 width="14"
                 height="14"
@@ -111,12 +210,12 @@ function goToUser(id: number) {
                 <polyline points="15 3 21 3 21 9" />
                 <line x1="10" y1="14" x2="21" y2="3" />
               </svg>
-            </button>
+            </a>
           </td>
         </tr>
 
         <!-- Empty state -->
-        <tr v-if="users.length === 0">
+        <tr v-if="sortedUsers.length === 0">
           <td :colspan="columns.length" class="empty-state">No users found.</td>
         </tr>
       </tbody>
@@ -167,6 +266,36 @@ th {
   text-transform: uppercase;
   text-align: left;
   white-space: nowrap;
+  user-select: none;
+}
+
+th.sortable {
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+th.sortable:hover {
+  color: #ffffff80;
+}
+
+th.sort-active {
+  color: #00e0ff;
+}
+
+.th-inner {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.sort-indicator {
+  display: flex;
+  align-items: center;
+  color: currentColor;
+}
+
+.sort-idle {
+  opacity: 0.25;
 }
 
 /* Rows */
@@ -206,7 +335,7 @@ td {
   text-decoration: underline;
 }
 
-/* Muted text */
+/* Muted */
 .muted {
   color: #ffffff60;
 }
@@ -251,6 +380,7 @@ td {
   border-radius: 8px;
   color: #ffffff80;
   cursor: pointer;
+  text-decoration: none;
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
