@@ -66,7 +66,7 @@ function validate() {
 }
 
 function handleOAuth(provider: string) {
-  return;
+  return provider;
 }
 
 function handleSubmit() {
