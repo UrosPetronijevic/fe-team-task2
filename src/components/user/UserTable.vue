@@ -84,7 +84,7 @@ function userPath(id: number): string {
 </script>
 
 <template>
-  <div class="table-wrapper">
+  <div class="table-wrapper" style="height: 100%">
     <table class="user-table">
       <thead>
         <tr>
@@ -226,6 +226,7 @@ function userPath(id: number): string {
 <style scoped>
 .table-wrapper {
   width: 100%;
+  height: 100%;
   overflow-x: auto;
   overflow-y: auto;
   scrollbar-width: thin;
