@@ -1,32 +1,20 @@
 <script setup>
+import { ref } from "vue";
 import BaseIcon from "@/components/ui/BaseIcon.vue";
 
+const inputRef = ref(null);
+
 defineProps({
-  label: {
-    type: String,
-    default: null,
-  },
-  type: {
-    type: String,
-    default: "text",
-  },
-  placeholder: {
-    type: String,
-    default: "",
-  },
-  modelValue: {
-    type: String,
-    default: "",
-  },
+  label: { type: String, default: null },
+  type: { type: String, default: "text" },
+  placeholder: { type: String, default: "" },
+  modelValue: { type: String, default: "" },
   icon: {
     type: String,
     default: null,
     validator: (v) => ["user", "mail", "lock"].includes(v),
   },
-  error: {
-    type: String,
-    default: null,
-  },
+  error: { type: String, default: null },
 });
 
 defineEmits(["update:modelValue"]);
@@ -35,7 +23,7 @@ defineEmits(["update:modelValue"]);
 <template>
   <div class="input-group">
     <div v-if="label" class="input-label-row">
-      <label class="input-label">{{ label }}</label>
+      <label class="input-label" @click="inputRef?.focus()">{{ label }}</label>
       <span v-if="error" class="input-error">{{ error }}</span>
     </div>
     <div class="input-wrapper">
@@ -46,6 +34,7 @@ defineEmits(["update:modelValue"]);
         :stroke-width="1.5"
       />
       <input
+        ref="inputRef"
         :type="type"
         :placeholder="placeholder"
         :value="modelValue"
