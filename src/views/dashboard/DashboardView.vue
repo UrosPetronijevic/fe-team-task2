@@ -56,7 +56,16 @@ const loggedInUsers = computed(() => users.value.filter((u) => u.isLoggedIn));
   gap: 28px;
   padding: 36px 40px;
   height: 100%;
-  overflow-y: auto;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.panels-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  flex: 1;
+  min-height: 0;
 }
 
 .page-header {
@@ -79,12 +88,6 @@ const loggedInUsers = computed(() => users.value.filter((u) => u.isLoggedIn));
   color: #ffffff60;
   font-family: ui-sans-serif, system-ui, sans-serif;
   font-size: 14px;
-}
-
-.panels-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
 }
 
 .state-message {

@@ -128,6 +128,22 @@ function goToUser(id: number) {
 .table-wrapper {
   width: 100%;
   overflow-x: auto;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #ffffff14 transparent;
+}
+
+.table-wrapper::-webkit-scrollbar {
+  width: 4px;
+}
+
+.table-wrapper::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+  background-color: #ffffff14;
+  border-radius: 9999px;
 }
 
 .user-table {

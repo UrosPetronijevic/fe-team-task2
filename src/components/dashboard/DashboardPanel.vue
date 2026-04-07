@@ -31,6 +31,7 @@ defineProps<{
   border: 1px solid #ffffff0f;
   border-radius: 16px;
   overflow: hidden;
+  min-height: 0;
 }
 
 .panel-header {

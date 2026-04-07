@@ -9,7 +9,7 @@ const authStore = useAuthStore();
 <template>
   <div class="app-wrapper">
     <TopBar v-if="authStore.isLoggedIn" />
-    <main>
+    <main class="app-main">
       <RouterView />
     </main>
   </div>
