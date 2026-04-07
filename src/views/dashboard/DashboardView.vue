@@ -25,21 +25,17 @@ const loggedInUsers = computed(() => users.value.filter((u) => u.isLoggedIn));
 
 <template>
   <div class="dashboard">
-    <!-- Page Header -->
     <div class="page-header">
       <h1 class="page-title">Dashboard</h1>
       <p class="page-subtitle">Overview of all user activity and status</p>
     </div>
 
-    <!-- Loading -->
     <div v-if="loading" class="state-message">Loading...</div>
 
-    <!-- Error -->
     <div v-else-if="error" class="state-message state-message--error">
       {{ error }}
     </div>
 
-    <!-- Grid -->
     <div v-else class="panels-grid">
       <DashboardPanel title="Active Users" dot="green" :users="activeUsers" />
       <DashboardPanel title="Inactive Users" dot="red" :users="inactiveUsers" />

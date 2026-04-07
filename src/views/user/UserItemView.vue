@@ -24,7 +24,6 @@ const sessions = computed(() => (user.value ? (user.value.id % 8) + 1 : 0));
 
 <template>
   <div class="user-item-view">
-    <!-- Subheader -->
     <div class="subheader">
       <button class="back-btn" @click="router.push('/users')">
         <svg
@@ -49,20 +48,16 @@ const sessions = computed(() => (user.value ? (user.value.id % 8) + 1 : 0));
       </div>
     </div>
 
-    <!-- Loading -->
     <div v-if="loading" class="state-message">Loading...</div>
 
-    <!-- Error -->
     <div v-else-if="error" class="state-message state-message--error">
       {{ error }}
     </div>
 
-    <!-- Not found -->
     <div v-else-if="!user" class="state-message state-message--error">
       User not found.
     </div>
 
-    <!-- Content -->
     <div v-else class="content">
       <UserProfileCard :user="user" />
 

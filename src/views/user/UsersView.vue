@@ -10,7 +10,6 @@ onMounted(fetchUsers);
 
 <template>
   <div class="users-view">
-    <!-- Page Header -->
     <div class="page-header">
       <div class="page-header-text">
         <h1 class="page-title">Users</h1>
@@ -35,15 +34,12 @@ onMounted(fetchUsers);
       </button>
     </div>
 
-    <!-- Loading -->
     <div v-if="loading" class="state-message">Loading...</div>
 
-    <!-- Error -->
     <div v-else-if="error" class="state-message state-message--error">
       {{ error }}
     </div>
 
-    <!-- Table -->
     <div v-else class="table-container">
       <UserTable
         :users="users"

@@ -68,7 +68,6 @@ function handleSubmit() {
       </template>
 
       <div class="form-container">
-        <!-- Success state -->
         <div v-if="submitted" class="success-box">
           <svg
             width="18"
@@ -86,7 +85,6 @@ function handleSubmit() {
           <span>Reset link sent! Check your inbox.</span>
         </div>
 
-        <!-- Form state -->
         <template v-else>
           <div class="form-fields">
             <BaseInput
