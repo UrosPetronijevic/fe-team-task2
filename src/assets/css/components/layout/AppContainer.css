@@ -8,4 +8,7 @@
 .app-main {
   flex: 1;
   overflow: hidden;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
 }
