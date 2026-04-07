@@ -7,7 +7,7 @@ withDefaults(
     title: string;
     subtitle?: string;
   }>(),
-  {},
+  {}
 );
 </script>
 
@@ -67,6 +67,7 @@ withDefaults(
     <div class="auth-right">
       <div class="auth-form-area">
         <div class="auth-header">
+          <slot name="header-icon" />
           <p v-if="label" class="auth-label">{{ label }}</p>
           <h1 class="auth-title">{{ title }}</h1>
           <p v-if="subtitle" class="auth-subtitle">{{ subtitle }}</p>

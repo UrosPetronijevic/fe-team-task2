@@ -2,7 +2,7 @@
 import { reactive } from "vue";
 import { useRouter } from "vue-router";
 import { useAuthStore } from "@/stores/auth";
-import AuthCard from "@/components/auth/AuthCard.vue";
+import AuthLayout from "@/components/auth/AuthLayout.vue";
 import OAuthButtons from "@/components/auth/OAuthButtons.vue";
 import BaseInput from "@/components/ui/BaseInput.vue";
 import BaseButton from "@/components/ui/BaseButton.vue";
@@ -71,79 +71,72 @@ function handleOAuth(provider: string) {
 
 function handleSubmit() {
   if (!validate()) return;
-
   authStore.login();
   router.push("/dashboard");
 }
 </script>
 
 <template>
-  <div class="page">
-    <div class="bg-gradient" />
+  <AuthLayout
+    label="Get Started"
+    title="Create your account"
+    subtitle="Join thousands of users building amazing projects"
+  >
+    <div class="oauth-wrapper">
+      <OAuthButtons @oauth="handleOAuth" />
+    </div>
 
-    <AuthCard
-      label="Get Started"
-      title="Create your account"
-      subtitle="Join thousands of users building amazing projects"
-    >
-      <div class="oauth-wrapper">
-        <OAuthButtons @oauth="handleOAuth" />
-      </div>
+    <div class="divider">
+      <div class="divider-line" />
+      <span class="divider-text">Or continue with email</span>
+      <div class="divider-line" />
+    </div>
 
-      <div class="divider">
-        <div class="divider-line" />
-        <span class="divider-text">Or continue with email</span>
-        <div class="divider-line" />
-      </div>
+    <div class="form-fields">
+      <BaseInput
+        v-model="form.email"
+        label="Email address"
+        type="email"
+        placeholder="you@example.com"
+        icon="mail"
+        :error="errors.email"
+      />
+      <BaseInput
+        v-model="form.password"
+        label="Password"
+        type="password"
+        placeholder="Create a password"
+        icon="lock"
+        :error="errors.password"
+      />
+      <BaseInput
+        v-model="form.confirmPassword"
+        label="Confirm password"
+        type="password"
+        placeholder="Confirm your password"
+        icon="lock"
+        :error="errors.confirmPassword"
+      />
+    </div>
 
-      <div class="form-fields">
-        <BaseInput
-          v-model="form.email"
-          label="Email address"
-          type="email"
-          placeholder="you@example.com"
-          icon="mail"
-          :error="errors.email"
-        />
+    <div class="form-actions">
+      <BaseCheckbox v-model="form.agreed" :error="errors.agreed">
+        I agree to the
+        <a href="#">Terms of Service</a>
+        and
+        <a href="#">Privacy Policy</a>
+      </BaseCheckbox>
 
-        <BaseInput
-          v-model="form.password"
-          label="Password"
-          type="password"
-          placeholder="Create a password"
-          icon="lock"
-          :error="errors.password"
-        />
+      <BaseButton type="submit" @click="handleSubmit">
+        Create account
+      </BaseButton>
 
-        <BaseInput
-          v-model="form.confirmPassword"
-          label="Confirm password"
-          type="password"
-          placeholder="Confirm your password"
-          icon="lock"
-          :error="errors.confirmPassword"
-        />
-      </div>
-
-      <div class="form-actions">
-        <BaseCheckbox v-model="form.agreed" :error="errors.agreed">
-          I agree to the
-          <a href="#">Terms of Service</a>
-          and
-          <a href="#">Privacy Policy</a>
-        </BaseCheckbox>
-
-        <BaseButton type="submit" @click="handleSubmit">
-          Create account
-        </BaseButton>
-
-        <p class="footer-text">
-          Already have an account?
-          <RouterLink to="/sign-in">Sign in</RouterLink>
-        </p>
-      </div>
-    </AuthCard>
-  </div>
+      <p class="footer-text">
+        Already have an account?
+        <RouterLink to="/sign-in">Sign in</RouterLink>
+      </p>
+    </div>
+  </AuthLayout>
 </template>
 
 <style scoped src="@/assets/css/views/auth/SignUpView.css"></style>

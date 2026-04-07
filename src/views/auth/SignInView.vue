@@ -2,7 +2,7 @@
 import { reactive } from "vue";
 import { useRouter } from "vue-router";
 import { useAuthStore } from "@/stores/auth";
-import AuthCard from "@/components/auth/AuthCard.vue";
+import AuthLayout from "@/components/auth/AuthLayout.vue";
 import OAuthButtons from "@/components/auth/OAuthButtons.vue";
 import BaseInput from "@/components/ui/BaseInput.vue";
 import BaseButton from "@/components/ui/BaseButton.vue";
@@ -24,7 +24,6 @@ const errors = reactive({
 
 function validate() {
   let valid = true;
-
   errors.email = "";
   errors.password = "";
 
@@ -50,67 +49,62 @@ function handleOAuth(provider: string) {
 
 function handleSubmit() {
   if (!validate()) return;
-
   authStore.login();
   router.push("/dashboard");
 }
 </script>
 
 <template>
-  <div class="page">
-    <div class="bg-gradient" />
+  <AuthLayout
+    label="Welcome Back"
+    title="Sign in to your account"
+    subtitle="Access your dashboard and manage your projects"
+  >
+    <div class="oauth-wrapper">
+      <OAuthButtons @oauth="handleOAuth" />
+    </div>
 
-    <AuthCard
-      label="Welcome Back"
-      title="Sign in to your account"
-      subtitle="Access your dashboard and manage your projects"
-    >
-      <div class="oauth-wrapper">
-        <OAuthButtons @oauth="handleOAuth" />
+    <div class="divider">
+      <div class="divider-line" />
+      <span class="divider-text">Or continue with email</span>
+      <div class="divider-line" />
+    </div>
+
+    <div class="form-fields">
+      <BaseInput
+        v-model="form.email"
+        label="Email address"
+        type="email"
+        placeholder="you@example.com"
+        icon="mail"
+        :error="errors.email"
+      />
+      <BaseInput
+        v-model="form.password"
+        label="Password"
+        type="password"
+        placeholder="Enter your password"
+        icon="lock"
+        :error="errors.password"
+      />
+    </div>
+
+    <div class="form-actions">
+      <div class="remember-row">
+        <BaseCheckbox v-model="form.remember">Remember me</BaseCheckbox>
+        <RouterLink to="/forgot-password" class="forgot-link">
+          Forgot password?
+        </RouterLink>
       </div>
 
-      <div class="divider">
-        <div class="divider-line" />
-        <span class="divider-text">Or continue with email</span>
-        <div class="divider-line" />
-      </div>
+      <BaseButton type="submit" @click="handleSubmit">Sign in</BaseButton>
 
-      <div class="form-fields">
-        <BaseInput
-          v-model="form.email"
-          label="Email address"
-          type="email"
-          placeholder="you@example.com"
-          icon="mail"
-          :error="errors.email"
-        />
-        <BaseInput
-          v-model="form.password"
-          label="Password"
-          type="password"
-          placeholder="Enter your password"
-          icon="lock"
-          :error="errors.password"
-        />
-      </div>
-
-      <div class="form-actions">
-        <div class="remember-row">
-          <BaseCheckbox v-model="form.remember">Remember me</BaseCheckbox>
-          <RouterLink to="/forgot-password" class="forgot-link">
-            Forgot password?
-          </RouterLink>
-        </div>
-
-        <BaseButton type="submit" @click="handleSubmit">Sign in</BaseButton>
-
-        <p class="footer-text">
-          Don't have an account?
-          <RouterLink to="/sign-up">Create one</RouterLink>
-        </p>
-      </div>
-    </AuthCard>
-  </div>
+      <p class="footer-text">
+        Don't have an account?
+        <RouterLink to="/sign-up">Create one</RouterLink>
+      </p>
+    </div>
+  </AuthLayout>
 </template>
 
 <style scoped src="@/assets/css/views/auth/SignInView.css"></style>
