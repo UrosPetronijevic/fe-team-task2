@@ -1,11 +1,8 @@
 <script setup>
 import { reactive, ref } from "vue";
-import { useRouter } from "vue-router";
 import AuthCard from "@/components/auth/AuthCard.vue";
 import BaseInput from "@/components/ui/BaseInput.vue";
 import BaseButton from "@/components/ui/BaseButton.vue";
-
-const router = useRouter();
 
 const submitted = ref(false);
 

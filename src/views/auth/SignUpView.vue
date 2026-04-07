@@ -66,7 +66,7 @@ function validate() {
 }
 
 function handleOAuth(provider: string) {
-  console.log(`OAuth with ${provider}`);
+  return provider;
 }
 
 function handleSubmit() {
