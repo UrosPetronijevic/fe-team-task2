@@ -47,3 +47,61 @@
 .state-message--error {
   color: #ff6b6b;
 }
+
+@media (max-width: 900px) {
+  .dashboard {
+    padding: 28px 24px;
+    gap: 20px;
+  }
+
+  .page-title {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard {
+    padding: 24px 16px 40px;
+    gap: 16px;
+
+    height: auto;
+    overflow: visible;
+  }
+
+  .panels-grid {
+    grid-template-columns: 1fr;
+    flex: none;
+    min-height: unset;
+    overflow: visible;
+  }
+
+  .page-title {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 400px) {
+  .dashboard {
+    padding: 20px 12px 36px;
+    gap: 14px;
+  }
+
+  .page-title {
+    font-size: 20px;
+  }
+
+  .page-subtitle {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 320px) {
+  .dashboard {
+    padding: 16px 10px 32px;
+    gap: 12px;
+  }
+
+  .page-title {
+    font-size: 18px;
+  }
+}

@@ -16,8 +16,11 @@ declare module "vue-router" {
   interface RouteMeta {
     requiresAuth?: boolean;
     requiresGuest?: boolean;
+    title?: string;
   }
 }
+
+const APP_NAME = "Pulse";
 
 const routes: RouteRecordRaw[] = [
   {
@@ -27,32 +30,32 @@ const routes: RouteRecordRaw[] = [
   {
     path: "/sign-in",
     component: SignInView,
-    meta: { requiresGuest: true },
+    meta: { requiresGuest: true, title: "Sign In" },
   },
   {
     path: "/sign-up",
     component: SignUpView,
-    meta: { requiresGuest: true },
+    meta: { requiresGuest: true, title: "Sign Up" },
   },
   {
     path: "/forgot-password",
     component: ForgotPasswordView,
-    meta: { requiresGuest: true },
+    meta: { requiresGuest: true, title: "Forgot Password" },
   },
   {
     path: "/dashboard",
     component: DashboardView,
-    meta: { requiresAuth: true },
+    meta: { requiresAuth: true, title: "Dashboard" },
   },
   {
     path: "/users",
     component: UsersView,
-    meta: { requiresAuth: true },
+    meta: { requiresAuth: true, title: "Users" },
   },
   {
     path: "/users/:id",
     component: UserItemView,
-    meta: { requiresAuth: true },
+    meta: { requiresAuth: true, title: "User Details" },
   },
   {
     path: "/:pathMatch(.*)*",
@@ -67,6 +70,8 @@ const router = createRouter({
 
 router.beforeEach((to) => {
   const authStore = useAuthStore();
+
+  document.title = to.meta.title ? `${to.meta.title} — ${APP_NAME}` : APP_NAME;
 
   if (to.meta.requiresAuth && !authStore.isLoggedIn) {
     return { path: "/sign-in" };

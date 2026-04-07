@@ -30,6 +30,7 @@
   cursor: pointer;
   padding: 0;
   transition: color 0.2s ease;
+  flex-shrink: 0;
 }
 
 .back-btn:hover {
@@ -55,6 +56,10 @@
 .breadcrumb-current {
   color: var(--text-primary);
   font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 160px;
 }
 
 .content {
@@ -79,4 +84,71 @@
 
 .state-message--error {
   color: #ff6b6b;
+}
+
+@media (max-width: 900px) {
+  .user-item-view {
+    padding: 24px 24px;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .user-item-view {
+    padding: 20px 16px 40px;
+    gap: 16px;
+    height: auto;
+    overflow-y: visible;
+  }
+
+  .content {
+    flex-direction: column;
+  }
+
+  .right-area {
+    width: 100%;
+    gap: 16px;
+  }
+
+  .breadcrumb-current {
+    max-width: 120px;
+  }
+}
+
+@media (max-width: 560px) {
+  .subheader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .breadcrumb-current {
+    max-width: 200px;
+  }
+}
+
+@media (max-width: 400px) {
+  .user-item-view {
+    padding: 16px 12px 36px;
+    gap: 14px;
+  }
+
+  .back-btn {
+    font-size: 13px;
+  }
+
+  .breadcrumb {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 320px) {
+  .user-item-view {
+    padding: 14px 10px 32px;
+    gap: 12px;
+  }
+
+  .breadcrumb-current {
+    max-width: 140px;
+  }
 }

@@ -85,7 +85,7 @@ function userPath(id: number): string {
 </script>
 
 <template>
-  <div class="table-wrapper" style="height: 100%">
+  <div class="table-wrapper">
     <table class="user-table">
       <thead>
         <tr>

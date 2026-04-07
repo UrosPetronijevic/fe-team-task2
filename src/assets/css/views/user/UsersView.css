@@ -53,6 +53,7 @@
   font-weight: 700;
   cursor: pointer;
   transition: opacity 0.2s ease;
+  flex-shrink: 0;
 }
 
 .add-user-btn:hover {
@@ -78,4 +79,82 @@
 
 .state-message--error {
   color: #ff6b6b;
+}
+
+@media (max-width: 900px) {
+  .users-view {
+    padding: 28px 24px;
+    gap: 20px;
+  }
+
+  .page-title {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .users-view {
+    padding: 24px 16px;
+    gap: 16px;
+    height: auto;
+    overflow: visible;
+  }
+
+  .page-header {
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .table-container {
+    flex: none;
+    min-height: unset;
+    overflow-x: auto;
+  }
+
+  .page-title {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 560px) {
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .add-user-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 400px) {
+  .users-view {
+    padding: 20px 12px;
+    gap: 14px;
+  }
+
+  .page-title {
+    font-size: 20px;
+  }
+
+  .page-subtitle {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 320px) {
+  .users-view {
+    padding: 16px 10px;
+    gap: 12px;
+  }
+
+  .page-title {
+    font-size: 18px;
+  }
+
+  .add-user-btn {
+    font-size: 13px;
+    height: 36px;
+  }
 }

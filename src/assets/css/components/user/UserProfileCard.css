@@ -56,6 +56,8 @@
   display: flex;
   gap: 8px;
   margin-bottom: 24px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .badge {
@@ -166,6 +168,7 @@
   font-family: ui-sans-serif, system-ui, sans-serif;
   font-size: 14px;
   font-weight: 500;
+  word-break: break-word;
 }
 
 .profile-actions {
@@ -212,4 +215,63 @@
 
 .delete-btn:hover {
   background-color: #ff4d4d20;
+}
+
+@media (max-width: 900px) {
+  .profile-card {
+    width: 300px;
+    padding: 28px 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .profile-card {
+    width: 100%;
+    flex-shrink: unset;
+    padding: 24px 20px;
+  }
+}
+
+@media (max-width: 400px) {
+  .profile-card {
+    padding: 20px 16px;
+    border-radius: 14px;
+  }
+
+  .avatar {
+    width: 72px;
+    height: 72px;
+  }
+
+  .avatar-initials {
+    font-size: 22px;
+  }
+
+  .profile-name {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 320px) {
+  .profile-card {
+    padding: 16px 12px;
+    border-radius: 12px;
+  }
+
+  .avatar {
+    width: 64px;
+    height: 64px;
+  }
+
+  .avatar-initials {
+    font-size: 20px;
+  }
+
+  .profile-name {
+    font-size: 16px;
+  }
+
+  .detail-value {
+    font-size: 13px;
+  }
 }
