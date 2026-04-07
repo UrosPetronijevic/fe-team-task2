@@ -24,7 +24,7 @@
 
 .page-title {
   margin: 0;
-  color: #ffffff;
+  color: var(--text-primary);
   font-family: ui-sans-serif, system-ui, sans-serif;
   font-size: 28px;
   font-weight: 700;
@@ -33,13 +33,13 @@
 
 .page-subtitle {
   margin: 0;
-  color: #ffffff60;
+  color: var(--text-secondary);
   font-family: ui-sans-serif, system-ui, sans-serif;
   font-size: 14px;
 }
 
 .state-message {
-  color: #ffffff60;
+  color: var(--text-secondary);
   font-family: ui-sans-serif, system-ui, sans-serif;
   font-size: 14px;
 }

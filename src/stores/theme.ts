@@ -2,7 +2,12 @@ import { defineStore } from "pinia";
 import { ref } from "vue";
 
 export const useThemeStore = defineStore("theme", () => {
-  const isDark = ref<boolean>(localStorage.getItem("isDark") === "true");
+  const stored = localStorage.getItem("isDark");
+  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+  const isDark = ref<boolean>(
+    stored !== null ? stored === "true" : prefersDark
+  );
 
   function applyTheme(): void {
     if (isDark.value) {
@@ -18,7 +23,6 @@ export const useThemeStore = defineStore("theme", () => {
     applyTheme();
   }
 
-  // apply correct theme immediately when store initializes
   applyTheme();
 
   return { isDark, toggleTheme };

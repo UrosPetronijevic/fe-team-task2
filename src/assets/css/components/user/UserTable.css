@@ -4,7 +4,7 @@
   overflow-x: auto;
   overflow-y: auto;
   scrollbar-width: thin;
-  scrollbar-color: #ffffff14 transparent;
+  scrollbar-color: var(--border-color) transparent;
 }
 
 .table-wrapper::-webkit-scrollbar {
@@ -16,7 +16,7 @@
 }
 
 .table-wrapper::-webkit-scrollbar-thumb {
-  background-color: #ffffff14;
+  background-color: var(--border-color);
   border-radius: 9999px;
 }
 
@@ -28,12 +28,12 @@
 }
 
 thead tr {
-  border-bottom: 1px solid #ffffff0f;
+  border-bottom: 1px solid var(--border-color);
 }
 
 th {
   padding: 10px 16px;
-  color: #ffffff40;
+  color: var(--text-muted);
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.5px;
@@ -49,11 +49,11 @@ th.sortable {
 }
 
 th.sortable:hover {
-  color: #ffffff80;
+  color: var(--text-secondary);
 }
 
 th.sort-active {
-  color: #00e0ff;
+  color: var(--accent);
 }
 
 .th-inner {
@@ -73,7 +73,7 @@ th.sort-active {
 }
 
 tbody tr {
-  border-bottom: 1px solid #ffffff08;
+  border-bottom: 1px solid var(--border-color);
   transition: background-color 0.15s ease;
 }
 
@@ -82,22 +82,22 @@ tbody tr:last-child {
 }
 
 tbody tr:hover {
-  background-color: #ffffff05;
+  background-color: var(--bg-elevated);
 }
 
 td {
   padding: 14px 16px;
-  color: #ffffffcc;
+  color: var(--text-primary);
   white-space: nowrap;
 }
 
 .id-cell {
-  color: #ffffff40;
+  color: var(--text-muted);
   font-size: 12px;
 }
 
 .username-link {
-  color: #00e0ff;
+  color: var(--accent);
   font-weight: 500;
   text-decoration: none;
 }
@@ -107,7 +107,7 @@ td {
 }
 
 .muted {
-  color: #ffffff60;
+  color: var(--text-secondary);
 }
 
 .status-badge {
@@ -116,7 +116,7 @@ td {
 }
 
 .status-badge.active {
-  color: #ffffff;
+  color: var(--text-primary);
 }
 
 .status-badge.inactive {
@@ -129,11 +129,11 @@ td {
 }
 
 .loggedin-badge.yes {
-  color: #00e0ff;
+  color: var(--accent);
 }
 
 .loggedin-badge.no {
-  color: #ffffff40;
+  color: var(--text-muted);
 }
 
 .action-btn {
@@ -142,19 +142,19 @@ td {
   justify-content: center;
   width: 32px;
   height: 32px;
-  background-color: #ffffff0d;
-  border: 1px solid #ffffff14;
+  background-color: var(--bg-elevated);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
-  color: #ffffff80;
+  color: var(--text-secondary);
   cursor: pointer;
   text-decoration: none;
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .action-btn:hover {
-  background-color: #00e0ff14;
-  border-color: #00e0ff30;
-  color: #00e0ff;
+  background-color: var(--accent-subtle);
+  border-color: var(--accent-muted);
+  color: var(--accent);
 }
 
 .col-id {
@@ -184,5 +184,5 @@ td {
 .empty-state {
   text-align: center;
   padding: 32px;
-  color: #ffffff40;
+  color: var(--text-muted);
 }

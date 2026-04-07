@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { useAuthStore } from "@/stores/auth";
+import { useThemeStore } from "@/stores/theme";
 import { useRouter } from "vue-router";
 import BaseIcon from "@/components/ui/BaseIcon.vue";
 
 const authStore = useAuthStore();
+const themeStore = useThemeStore();
 const router = useRouter();
 
 function handleLogout() {
@@ -36,8 +38,8 @@ function handleLogout() {
     <div class="topbar-spacer" />
 
     <div class="topbar-actions">
-      <button class="icon-btn">
-        <BaseIcon name="sun" :size="17" />
+      <button class="icon-btn" @click="themeStore.toggleTheme">
+        <BaseIcon :name="themeStore.isDark ? 'moon' : 'sun'" :size="17" />
       </button>
 
       <div class="topbar-divider" />

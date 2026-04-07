@@ -9,8 +9,8 @@
   flex-direction: column;
   gap: 8px;
   padding: 20px 24px;
-  background-color: #ffffff08;
-  border: 1px solid #ffffff0f;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
   border-radius: 16px;
 }
 
@@ -18,7 +18,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  color: #ffffff40;
+  color: var(--text-muted);
 }
 
 .stat-label {
@@ -30,7 +30,7 @@
 }
 
 .stat-value {
-  color: #ffffff;
+  color: var(--text-primary);
   font-family: ui-sans-serif, system-ui, sans-serif;
   font-size: 32px;
   font-weight: 700;
@@ -39,7 +39,7 @@
 }
 
 .stat-sub {
-  color: #ffffff40;
+  color: var(--text-muted);
   font-family: ui-sans-serif, system-ui, sans-serif;
   font-size: 12px;
 }
