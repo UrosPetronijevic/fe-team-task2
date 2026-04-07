@@ -15,16 +15,4 @@ const authStore = useAuthStore();
   </div>
 </template>
 
-<style scoped>
-.app-wrapper {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-
-.app-main {
-  flex: 1;
-  overflow: hidden;
-}
-</style>
+<style scoped src="@/assets/css/components/layout/AppContainer.css"></style>
