@@ -7,7 +7,7 @@ withDefaults(
     title: string;
     subtitle?: string;
   }>(),
-  {},
+  {}
 );
 </script>
 

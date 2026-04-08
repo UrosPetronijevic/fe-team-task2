@@ -1,4 +1,4 @@
-# Wonder
+# Pulse
 
 A small user management dashboard built with Vue 3 and TypeScript.
 
@@ -18,7 +18,7 @@ flow (sign in, sign up, forgot password) though it's mostly UI for now.
 ## Project structure
 
 - `components/ui` — reusable base components (BaseInput, BaseButton, BaseIcon, etc.)
-- `components/auth` — auth card and OAuth buttons
+- `components/auth` — auth layout and OAuth buttons
 - `components/layout` — top bar and app container
 - `components/dashboard` — dashboard panel
 - `components/user` — user table, profile card, stat cards, account details
