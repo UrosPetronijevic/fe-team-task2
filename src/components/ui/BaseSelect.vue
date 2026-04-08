@@ -11,6 +11,7 @@ const props = defineProps<{
   modelValue: string;
   options: SelectOption[];
   icon?: string;
+  width?: string;
 }>();
 
 const emit = defineEmits<{
@@ -23,7 +24,7 @@ const containerRef = ref<HTMLElement | null>(null);
 const selectedLabel = computed(
   () =>
     props.options.find((o) => o.value === props.modelValue)?.label ??
-    props.options[0]?.label,
+    props.options[0]?.label
 );
 
 function select(value: string) {
@@ -39,7 +40,7 @@ function handleOutsideClick(e: MouseEvent) {
 
 onMounted(() => document.addEventListener("mousedown", handleOutsideClick));
 onUnmounted(() =>
-  document.removeEventListener("mousedown", handleOutsideClick),
+  document.removeEventListener("mousedown", handleOutsideClick)
 );
 </script>
 
@@ -48,6 +49,7 @@ onUnmounted(() =>
     <button
       class="base-select__trigger"
       :class="{ 'base-select__trigger--open': open }"
+      :style="width ? { width } : {}"
       type="button"
       @click="open = !open"
     >
@@ -125,6 +127,7 @@ onUnmounted(() =>
 
 .base-select__label {
   flex: 1;
+  text-align: left;
 }
 
 .base-select__chevron {

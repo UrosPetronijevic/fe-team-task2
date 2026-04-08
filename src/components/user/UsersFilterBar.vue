@@ -50,11 +50,13 @@ const emit = defineEmits<{
         :model-value="status"
         :options="statusOptions"
         icon="filter"
+        width="130px"
         @update:model-value="emit('update:status', $event)"
       />
       <BaseSelect
         :model-value="loggedIn"
         :options="loggedInOptions"
+        width="130px"
         @update:model-value="emit('update:loggedIn', $event)"
       />
     </div>
