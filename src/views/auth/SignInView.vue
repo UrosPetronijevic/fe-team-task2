@@ -107,4 +107,4 @@ function handleSubmit() {
   </AuthLayout>
 </template>
 
-<style scoped src="@/assets/css/views/auth/SignInView.css"></style>
+<style scoped src="@/views/auth/SignInView.css"></style>

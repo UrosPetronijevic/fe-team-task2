@@ -45,4 +45,4 @@ const loggedInUsers = computed(() => users.value.filter((u) => u.isLoggedIn));
   </div>
 </template>
 
-<style scoped src="@/assets/css/views/dashboard/DashboardView.css"></style>
+<style scoped src="@/views/dashboard/DashboardView.css"></style>

@@ -81,4 +81,4 @@ const filteredUsers = computed(() => {
   </div>
 </template>
 
-<style scoped src="@/assets/css/views/user/UsersView.css"></style>
+<style scoped src="@/views/user/UsersView.css"></style>

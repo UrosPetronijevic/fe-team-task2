@@ -67,4 +67,4 @@ const sessions = computed(() => (user.value ? (user.value.id % 8) + 1 : 0));
   </div>
 </template>
 
-<style scoped src="@/assets/css/views/user/UserItemView.css"></style>
+<style scoped src="@/views/user/UserItemView.css"></style>

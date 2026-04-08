@@ -15,4 +15,4 @@ const authStore = useAuthStore();
   </div>
 </template>
 
-<style scoped src="@/assets/css/components/layout/AppContainer.css"></style>
+<style scoped src="@/components/layout/AppContainer.css"></style>

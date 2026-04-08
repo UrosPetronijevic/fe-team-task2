@@ -45,4 +45,4 @@ defineEmits(["update:modelValue"]);
   </div>
 </template>
 
-<style scoped src="@/assets/css/components/ui/BaseInput.css"></style>
+<style scoped src="@/components/ui/BaseInput.css"></style>

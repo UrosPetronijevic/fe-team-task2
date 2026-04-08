@@ -96,4 +96,4 @@ function formatDate(dateStr: string): string {
   </div>
 </template>
 
-<style scoped src="@/assets/css/components/user/UserProfileCard.css"></style>
+<style scoped src="@/components/user/UserProfileCard.css"></style>

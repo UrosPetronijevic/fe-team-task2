@@ -50,4 +50,4 @@ function formatDate(dateStr: string): string {
   </div>
 </template>
 
-<style scoped src="@/assets/css/components/user/UserStatCards.css"></style>
+<style scoped src="@/components/user/UserStatCards.css"></style>

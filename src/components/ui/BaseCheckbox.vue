@@ -31,4 +31,4 @@ defineEmits(["update:modelValue"]);
   </label>
 </template>
 
-<style scoped src="@/assets/css/components/ui/BaseCheckbox.css"></style>
+<style scoped src="@/components/ui/BaseCheckbox.css"></style>

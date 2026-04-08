@@ -80,4 +80,4 @@ withDefaults(
   </div>
 </template>
 
-<style scoped src="@/assets/css/components/auth/AuthLayout.css"></style>
+<style scoped src="@/components/auth/AuthLayout.css"></style>

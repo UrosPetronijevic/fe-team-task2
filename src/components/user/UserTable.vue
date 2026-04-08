@@ -182,4 +182,4 @@ function userPath(id: number): string {
   </div>
 </template>
 
-<style scoped src="@/assets/css/components/user/UserTable.css"></style>
+<style scoped src="@/components/user/UserTable.css"></style>

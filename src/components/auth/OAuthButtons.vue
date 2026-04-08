@@ -22,4 +22,4 @@ defineEmits(["oauth"]);
   </div>
 </template>
 
-<style scoped src="@/assets/css/components/auth/OAuthButtons.css"></style>
+<style scoped src="@/components/auth/OAuthButtons.css"></style>

@@ -87,4 +87,4 @@ function handleSubmit() {
   </AuthLayout>
 </template>
 
-<style scoped src="@/assets/css/views/auth/ForgotPasswordView.css"></style>
+<style scoped src="@/views/auth/ForgotPasswordView.css"></style>

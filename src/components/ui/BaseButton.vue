@@ -20,4 +20,4 @@ defineProps({
   </button>
 </template>
 
-<style scoped src="@/assets/css/components/ui/BaseButton.css"></style>
+<style scoped src="@/components/ui/BaseButton.css"></style>

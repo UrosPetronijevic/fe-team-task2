@@ -52,4 +52,4 @@ function handleLogout() {
   </header>
 </template>
 
-<style scoped src="@/assets/css/components/layout/TopBar.css"></style>
+<style scoped src="@/components/layout/TopBar.css"></style>

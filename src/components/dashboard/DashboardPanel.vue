@@ -30,7 +30,4 @@ withDefaults(
   </div>
 </template>
 
-<style
-  scoped
-  src="@/assets/css/components/dashboard/DashboardPanel.css"
-></style>
+<style scoped src="@/components/dashboard/DashboardPanel.css"></style>
